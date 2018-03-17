@@ -43,6 +43,7 @@ public class Reservation {
         this.price = price;
     }
 
+    //metoda do wystawiania buildera na zewnatrz
     public static ReservationBuilder builder() {
         return new ReservationBuilder();
     }
@@ -56,6 +57,7 @@ public class Reservation {
         public ReservationBuilder date(LocalDate val) {
             this.date = val;
             return this;
+            //return this zwraca ten obiekt z dobudowana wartoscia
         }
 
         public ReservationBuilder headcount(int val) {

@@ -11,6 +11,11 @@ public class Playground {
 
         List<String> names = Arrays.asList("Piotr", "Jan", "Ala");
 
+        for (int i = 0; i < names.size(); i++) {
+            String s = names.get(i);
+            System.out.println(s);
+        }
+
         System.out.println("Petla for each .....");
         for (String s : names) {
             System.out.println(s);
@@ -18,14 +23,22 @@ public class Playground {
 
         System.out.println("Z uzyciem iteratora .....");
         Iterator<String> iterator = names.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String next = iterator.next();
             System.out.println("Podana wartosc to: " + next);
         }
 
-        for (int i = 0; i < names.size(); i++) {
-            String s = names.get(i);
-            System.out.println(s);
+        System.out.println("z uzyciem wlasnego iteratora");
+        MyCollection imiona = new MyCollection();
+        imiona.addELement("Piotr");
+        imiona.addELement("Pawel");
+        imiona.addELement("Kuba");
+
+        pl.sda.poznan.iterator.Iterator<String> iteratorImion = imiona.getIterator();
+        while (iteratorImion.hasNextElement()) {
+            String elem = iteratorImion.getNextElement();
+            System.out.println(elem);
         }
+
     }
 }
