@@ -2,8 +2,6 @@ package pl.sda.poznan.files;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Program {
@@ -52,16 +50,24 @@ public class Program {
             System.out.println("ls - wyswietla katalogi");
             System.out.println("mkdir nazwa -> tworzy katalogi o danej nazwie");
             System.out.print(currentFile.getAbsolutePath() + ">");
-            String operation = scanner.next();
-            switch (operation) {
+            String operation = scanner.nextLine();
+            String[] split = operation.split(" ");
+
+            switch (split[0]) {
                 case "ls":
                     listFiles(currentFile);
                     break;
                 case "mkdir":
-
+                    System.out.println("Tworze katalog...");
+                    String catalogName = split[1];
+                    File newCatalog = new File(currentFile.getAbsolutePath() + "/" + catalogName);
+                    boolean result = newCatalog.mkdir();
+                    System.out.println(result ? "Utworzono katalog" : "Nie utworzono katalogu");
                     break;
                 case "exit":
                     exit = true;
+                default:
+                    System.out.println("nieznane polecenie");
             }
         }
 
